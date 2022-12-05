@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+[Layout]
+%d : 날짜
+%n : new line
+%t : thread
+%p : 로깅레벨
+%c : 로깅이 발생한 카테고리
+%C : 로깅이 발생한 클래스명
+%m : 로깅 메세지
+-->
+
+
+
+<configuration scan="true" scanPeriod="30 seconds" >
+
+  <!-- <property resource="logback.properties"/> -->
+  <!-- <property name="SAMPLE" value="" /> -->
+
+  <timestamp key="date" datePattern="yyyyMMdd"/>
+  <timestamp key="year" datePattern="YYYY"/>
+  <timestamp key="month" datePattern="MM"/>
+  <timestamp key="day" datePattern="dd"/>
+
+  <!-- 콘솔로 로그를 남기는 설정 -->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <charset>UTF-8</charset>
+      <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%p] [%t] [%c]%m%n</Pattern>
+    </encoder>
+  </appender>
+
+
+
+  <!-- 파일로 로그를 남기는 설정 -->
+  <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!-- 저장경로/파일명 -->
+    <file>${log.url}/${year}/${month}/${date}.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>[%d{yyyy-MM-dd HH:mm:ss}] [%p] [%t] [%c] %m%n</Pattern>
+    </encoder>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <!-- 파일명을 .zip .tz로 하는경우 자동으로 압축된다 -->
+      <fileNamePattern>${log.url}/${year}/${month}/${date}_%i.log.zip</fileNamePattern>
+      <minIndex>1</minIndex>
+      <maxIndex>10</maxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>30MB</maxFileSize>
+    </triggeringPolicy>
+  </appender>
+
+
+
+  <!-- 출력되는 로그의 양 순서 : ERROR < WARN < INFO < DEBUG < TRACE -->         
+  <!-- com.freedy.sample 하위 패키지에서 로그설정 -->
+  <!-- additivity가 false인 경우 상위로거의 설정값을 상속받지 않는다. -->
+  <logger name="com.freedy.sample" level="ERROR" additivity="false">
+    <appender-ref ref="file" />
+    <appender-ref ref="console" />
+  </logger>
+
+  <!-- root는 글로벌 로거를 의미하며, 위의 logger에 해당하지 않으면 root 로거가 실행된다. -->
+  <root level="ERROR">
+    <appender-ref ref="file" />
+    <appender-ref ref="console" />
+  </root>
+</configuration>

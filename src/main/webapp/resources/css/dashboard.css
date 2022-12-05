@@ -1,0 +1,32 @@
+ol, ul {
+	padding : 0;
+
+}
+
+
+.server-refer{display:inline-block;width:15px;height:15px;}
+.server-reference-wait{background:#239f4b;}
+.server-reference-recognize{background:#17a1e6;}
+.server-reference-error {background:#e33441;}
+#channelBox {margin-top:-10px;/* height:190px; */height:100%;}
+#channelBox li {float:left;width:10%;text-align:center;margin-top:10px;}
+#channelBox li .img {display:block;background-position:50% 50%;background-repeat:no-repeat;height:61px;}
+#channelBox li .img.img01 {background-image:url("/resources/images/contents/dashboard_channel_img01.jpg");}
+#channelBox li .img.img02 {background-image:url("/resources/images/contents/dashboard_channel_img02.jpg");}
+#channelBox li .img.img03 {background-image:url("/resources/images/contents/dashboard_channel_img03.jpg");}
+
+.keaword_spread {height:250px;margin-top:20px;text-align:center;padding:10px;}
+.keaword_spread .inner {padding:10px;background:#fff;height:100%;}
+
+.table {display:table;width:100%;height:100%;}
+.center {
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.tableCell {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}

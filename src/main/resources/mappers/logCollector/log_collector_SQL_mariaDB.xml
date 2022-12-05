@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyeongbukSystem.management.mainSystem.crawling.FileCrawlingDAO">
+	<insert id="insertLogCollectPnttm" parameterType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttmVO">
+		INSERT INTO log_collect_pnttm(log_file_name,frst_register_id,frst_register_pnttm, server_no)
+		values(#{logFileName},#{frstRegisterId}, STR_TO_DATE(#{frstRegisterPnttm}, '%Y%m%d%H%i%S'), #{serverNo})
+		<selectKey keyProperty="idx" resultType="Integer" order="AFTER">
+        SELECT LAST_INSERT_ID() idx
+    	</selectKey>
+	</insert>
+	<update id="updateLogCollectPnttm" parameterType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttmVO">
+		UPDATE log_collect_pnttm SET
+			log_file_name = #{logFileName}
+			<if test="lineCnt != null">
+				, line_cnt = #{lineCnt}
+			</if>
+			<if test="serverNo != null and !serverNo.equals('')">, server_no = #{serverNo}</if>
+			, last_updusr_id = #{lastUpdusrId}
+			, last_updusr_pnttm = STR_TO_DATE(#{lastUpdusrPnttm}, '%Y%m%d%H%i%S') 
+		WHERE idx = #{idx}
+	</update>
+	<select id="listLogCollectPnttm" parameterType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttmVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttm">
+		SELECT * FROM log_collect_pnttm
+		WHERE 1=1
+			<if test="bgnde != null">
+				AND frst_register_pnttm <![CDATA[ >= ]]> #{bgnde}
+			</if>
+			<if test="endde != null">
+				AND frst_register_pnttm <![CDATA[ <= ]]> #{endde}
+			</if>
+			<if test="searchDeleteAt != null">
+		 		AND delete_at = #{searchDeleteAt}
+			</if>
+			<if test="searchDeleteAt == null">
+				AND delete_at = 'N'
+			</if>
+			<if test="searchLogFileName != null">
+				AND log_file_name LIKE CONCAT('%', #{searchLogFileName}, '%')
+			</if>
+			<if test="searchIdx != null">
+				AMD idx = #{searchIdx}
+			</if>
+			<if test="searchFrstRegisterId != null">
+				AMD frst_register_id = #{searchFrstRegisterId}
+			</if>
+			<if test="searchFrstRegisterPnttm != null">
+				AMD frst_register_pnttm = #{searchFrstRegisterPnttm}
+			</if>
+			<if test="searchLastUpdusrId != null">
+				AMD last_updusr_id = #{searchLastUpdusrId}
+			</if>
+			<if test="searchLastUpdusrPnttm != null">
+				AMD last_updusr_pnttm = #{searchLastUpdusrPnttm}
+			</if>	
+			<if test="searchServerNo != null and !searchServerNo.equals('')"> AND server_no = #{searchServerNo}</if>
+	</select>
+	<select id="selectLogCollectPnttm" parameterType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttmVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttm">
+		SELECT * FROM log_collect_pnttm WHERE idx = #{idx}
+	</select>
+	<select id="selectLastLogCollectPnttm" parameterType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttmVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttm">
+		SELECT * FROM log_collect_pnttm WHERE delete_at = 'N' 
+			<if test="searchLogFileName != null">
+				AND log_file_name LIKE CONCAT('%', #{searchLogFileName}, '%')
+			</if>
+			<if test="searchServerNo != null and !searchServerNo.equals('')"> AND server_no = #{searchServerNo}</if>
+		ORDER BY idx DESC LIMIT 1
+	</select>
+	<update id="deleteLogCollectPnttm" parameterType="com.gyeongbukSystem.management.mainSystem.dto.LogCollectPnttmVO">
+		UPDATE log_collect_pnttm SET 
+			delete_at = #{deleteAt}, 
+			last_updusr_id = #{lastUpdusrId}, 
+			last_updusr_pnttm = #{lastUpdusrPnttm} 
+		WHERE idx = #{idx}
+	</update>
+	<select id="selectLastUpdateTime" resultType="string">
+		SELECT MAX(last_updusr_pnttm) FROM LOG_COLLECT_PNTTM WHERE delete_at = 'N';
+	</select>	
+</mapper>

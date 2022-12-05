@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "Nanum Square";
+  src: url("/resources/fonts/NanumSquareL.eot"); /* IE9 Compat Modes */
+  src: url("/resources/fonts/NanumSquareL.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NanumSquareL.woff") format("woff"), /* Modern Browsers */
+       url("/resources/fonts/NanumSquareL.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/resources/fonts/NanumSquareOTFLight.svg#017f9c78318bcde3d1dc4451e8eaca0a") format("svg"); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  300;
+}
+
+@font-face {
+  font-family: "Nanum Square";
+  src: url("/resources/fonts/NanumSquareR.eot"); /* IE9 Compat Modes */
+  src: url("/resources/fonts/NanumSquareR.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NanumSquareR.woff") format("woff"), /* Modern Browsers */
+       url("/resources/fonts/NanumSquareR.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/resources/fonts/NanumSquareOTFR.svg#9e23ceb0c858ca37642ba540402577eb") format("svg"); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: "Nanum Square";
+  src: url("/resources/fonts/NanumSquareB.eot"); /* IE9 Compat Modes */
+  src: url("/resources/fonts/NanumSquareB.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NanumSquareB.woff") format("woff"), /* Modern Browsers */
+       url("/resources/fonts/NanumSquareB.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/resources/fonts/NanumSquareOTFB.svg#a41a1fda1fdf3dafd3394867a156b1cf") format("svg"); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: "Nanum Square";
+  src: url("/resources/fonts/NanumSquareEB.eot"); /* IE9 Compat Modes */
+  src: url("/resources/fonts/NanumSquareEB.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NanumSquareEB.woff") format("woff"), /* Modern Browsers */
+       url("/resources/fonts/NanumSquareEB.ttf")  format("truetype"), /* Safari, Android, iOS */
+       url("/resources/fonts/NanumSquareOTFExtraBold.svg#090d6763bc81b49309446d23fbd10e87") format("svg"); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  900;
+}
+
+
+
+
+@font-face {
+  font-family: "Noto Sans KR";
+   src: url("/resources/fonts/NotoSans-Thin.eot"); /* IE9 Compat Modes */
+   src: url("/resources/fonts/NotoSans-Thin.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NotoSans-Thin.woff") format("woff"), /* Modern Browsers */
+	   url("/resources/fonts/NotoSans-Thin.otf")  format("truetype"), /* Safari, Android, iOS */
+       
+  font-style:   normal;
+  font-weight:  100;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+   src: url("/resources/fonts/NotoSans-Light.eot"); /* IE9 Compat Modes */
+   src: url("/resources/fonts/NotoSans-Light.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NotoSans-Light.woff") format("woff"), /* Modern Browsers */
+	   url("/resources/fonts/NotoSans-Light.otf")  format("truetype"), /* Safari, Android, iOS */
+       
+  font-style:   normal;
+  font-weight:  300;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/resources/fonts/NotoSans-Regular.eot"); /* IE9 Compat Modes */
+  src: url("/resources/fonts/NotoSans-Regular.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NotoSans-Regular.woff") format("woff"), /* Modern Browsers */
+       url("/resources/fonts/NotoSans-Regular.otf")  format("truetype"), /* Safari, Android, iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  src: url("/resources/fonts/NotoSans-Medium.eot"); /* IE9 Compat Modes */
+  src: url("/resources/fonts/NotoSans-Medium.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NotoSans-Medium.woff") format("woff"), /* Modern Browsers */
+	   url("/resources/fonts/NotoSans-Medium.otf")  format("truetype"), /* Safari, Android, iOS */
+       
+  font-style:   normal;
+  font-weight:  500;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+   src: url("/resources/fonts/NotoSans-Bold.eot"); /* IE9 Compat Modes */
+   src: url("/resources/fonts/NotoSans-Bold.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NotoSans-Bold.woff") format("woff"), /* Modern Browsers */
+	   url("/resources/fonts/NotoSans-Bold.otf")  format("truetype"), /* Safari, Android, iOS */
+       
+  font-style:   normal;
+  font-weight:  700;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+   src: url("/resources/fonts/NotoSans-Black.eot"); /* IE9 Compat Modes */
+   src: url("/resources/fonts/NotoSans-Black.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+       url("/resources/fonts/NotoSans-Black.woff") format("woff"), /* Modern Browsers */
+	   url("/resources/fonts/NotoSans-Black.otf")  format("truetype"), /* Safari, Android, iOS */
+       
+  font-style:   normal;
+  font-weight:  900;
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    src: url(/resources/fonts/NanumBarunGothicWeb.eot);
+    src: url(/resources/fonts/NanumBarunGothicWeb.eot?#iefix) format("embedded-opentype"),
+    	 url(/resources/fonts/NanumBarunGothicWeb.woff) format("woff"),
+    	 url(/resources/fonts/NanumBarunGothicWeb.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'NanumBareunGothicLight';
+    src: url(/resources/fonts/NanumBarunGothicWebLight.eot);
+    src: url(/resources/fonts/NanumBarunGothicWebLight.eot?#iefix) format("embedded-opentype"),
+    	 url(/resources/fonts/NanumBarunGothicWebLight.woff) format("woff"),
+    	 url(/resources/fonts/NanumBarunGothicWebLight.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'NanumBarunGothicBold';
+    src: url(/resources/fonts/NanumBarunGothicWebBold.eot);
+    src: url(/resources/fonts/NanumBarunGothicWebBold.eot?#iefix) format("embedded-opentype"),
+    	 url(/resources/fonts/NanumBarunGothicWebBold.woff) format("woff"),
+    	 url(/resources/fonts/NanumBarunGothicWebBold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: 'NanumBareunGothicUltraLight';
+    src: url(/resources/fonts/NanumBarunGothicWebUltraLight.eot);
+    src: url(/resources/fonts/NanumBarunGothicWebUltraLight.eot?#iefix) format("embedded-opentype"),
+    	 url(/resources/fonts/NanumBarunGothicWebUltraLight.woff) format("woff"),
+    	 url(/resources/fonts/NanumBarunGothicWebUltraLight.ttf) format("truetype");
+}

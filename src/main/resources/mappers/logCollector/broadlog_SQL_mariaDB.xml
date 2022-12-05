@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyeongbukSystem.management.mainSystem.crawling.BroadlogDAO">
+	<insert id="insertBroadlog" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO">
+		INSERT INTO tn_broadlog(log_collect_pnttm_idx,line_num,dev_id,j_id,pro_type,broad_sttus,broad_type,log_time,log_str,log_type)
+		values(#{logCollectPnttmIdx}, #{lineNum}, #{devId}, #{jId},#{proType}, #{broadSttus}, #{broadType}, STR_TO_DATE(#{logTime}, '%Y%m%d %H:%i:%S:%f') , #{logStr},#{logType})
+	</insert>
+	<update id="updateBroadlog" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO">
+		UPDATE tn_broadlog SET
+			log_str = #{logStr}
+			<if test="logCollectPnttmIdx != null">,log_collect_pnttm_idx = #{logCollectPnttmIdx}</if>
+			<if test="lineNum != null">,line_num = #{lineNum}</if>
+			<if test="devId != null">,dev_id = #{devId}</if>
+			<if test="jId != null">,j_id = #{jId}</if>
+			<if test="proType != null">,pro_type = #{proType}</if>
+			<if test="broadSttus != null">,broad_sttus = #{broadSttus}</if>
+			<if test="broadType != null">,broad_type = #{broadType}</if>
+			<if test="logTime != null">,STR_TO_DATE(#{logTime}, '%Y%m%d %H:%i:%S:%f')</if>
+			<if test="logType != null">, log_type = #{logType}</if>
+		WHERE broadlog_id = #{broadlogIdx}
+	</update>
+	<select id="listBroadlogCnt" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO" resultType="int">
+		SELECT count(*) FROM tn_broadlog
+		WHERE 1=1
+			<if test="searchBroadlogId != null and !searchBroadlogId.equals('')"> AND broadlog_id = #{searchBroadlogId}</if>
+			<if test="searchLogCollectPnttmIdx != null and !searchLogCollectPnttmIdx.equals('')"> AND log_collect_pnttm_idx = #{searchLogCollectPnttmIdx}</if>
+			<if test="searchLineNum != null and !searchLineNum.equals('')"> AND line_num = #{searchLineNum}</if>
+			<if test="searchType != null"> <!-- 나중에 채워넣기 --> </if>
+			<if test="searchDevId != null and !searchDevId.equals('')"> AND dev_id = #{searchDevId}</if>
+			<if test="searchStationId != null and !searchStationId.equals('')"> 
+				AND (dev_id = CONCAT('[S]',#{searchStationId}) or dev_id = (SELECT dev_id FROM device_info where dev_id = #{searchStationId})) 
+			</if>
+			<if test="searchJId != null and !searchJId.equals('')"> AND j_id = #{searchJId}</if>
+			<if test="searchProType != null and !searchProType.equals('')"> AND pro_type = #{searchProType}</if>
+			<if test="searchBroadSttus != null and !searchBroadSttus.equals('')"> AND broad_sttus = #{searchBroadSttus}</if>
+			<if test="searchBroadType != null and !searchBroadType.equals('')"> AND broad_type = #{searchBroadType}</if>
+			<if test="searchLogTime != null and !searchLogTime.equals('')"> AND log_time = #{searchLogTime}</if>
+			<if test="searchLogStr != null and !searchLogStr.equals('')"> AND log_str LIKE CONCAT(CONCAT('%',  #{searchLogStr}), '%')</if>
+			<if test="searchLogType != null and !searchLogType.equals('')"> AND log_type = #{searchLogType}</if>
+			<if test="bgnde != null and !bgnde.equals('')">
+				AND log_time <![CDATA[ >= ]]> STR_TO_DATE(#{bgnde}, '%Y-%m-%dT%H:%i')
+			</if>
+			<if test="endde != null and !endde.equals('')">
+				AND log_time <![CDATA[ <= ]]> STR_TO_DATE(#{endde}, '%Y-%m-%dT%H:%i')
+			</if>
+			
+	</select>
+	<select id="listBroadlog" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.Broadlog">
+		SELECT *,(select concat(server_no, concat(' ', log_file_name)) from log_collect_pnttm where idx = tn_broadlog.log_collect_pnttm_idx) server_no FROM tn_broadlog
+		WHERE 1=1
+			<if test="searchBroadlogId != null and !searchBroadlogId.equals('')"> AND broadlog_id = #{searchBroadlogId}</if>
+			<if test="searchLogCollectPnttmIdx != null and !searchLogCollectPnttmIdx.equals('')"> AND log_collect_pnttm_idx = #{searchLogCollectPnttmIdx}</if>
+			<if test="searchLineNum != null and !searchLineNum.equals('')"> AND line_num = #{searchLineNum}</if>
+			<if test="searchType != null"> <!-- 나중에 채워넣기 --> </if>
+			<if test="searchDevId != null and !searchDevId.equals('')"> AND dev_id = #{searchDevId}</if>
+			<if test="searchStationId != null and !searchStationId.equals('')"> 
+				AND (dev_id = CONCAT('[S]',#{searchStationId}) or dev_id = (SELECT dev_id FROM device_info where station_id = #{searchStationId})) 
+			</if>
+			<if test="searchJId != null and !searchJId.equals('')"> AND j_id = #{searchJId}</if>
+			<if test="searchProType != null and !searchProType.equals('')"> AND pro_type = #{searchProType}</if>
+			<if test="searchBroadSttus != null and !searchBroadSttus.equals('')"> AND broad_sttus = #{searchBroadSttus}</if>
+			<if test="searchBroadType != null and !searchBroadType.equals('')"> AND broad_type = #{searchBroadType}</if>
+			<if test="searchLogTime != null and !searchLogTime.equals('')"> AND log_time = #{searchLogTime}</if>
+			<if test="searchLogStr != null and !searchLogStr.equals('')"> AND log_str LIKE CONCAT(CONCAT('%',  #{searchLogStr}), '%')</if>
+			<if test="searchLogType != null and !searchLogType.equals('')"> AND log_type = #{searchLogType}</if>
+			<if test="bgnde != null and !bgnde.equals('')">
+				AND log_time <![CDATA[ >= ]]> STR_TO_DATE(#{bgnde}, '%Y-%m-%dT%H:%i')
+			</if>
+			<if test="endde != null and !endde.equals('')">
+				AND log_time <![CDATA[ <= ]]> STR_TO_DATE(#{endde}, '%Y-%m-%dT%H:%i')
+			</if>
+		ORDER BY log_time desc
+		LIMIT ${startNum}, ${endNum}
+	</select>
+	<select id="selectBroadlog" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.Broadlog">
+		SELECT * FROM tn_broadlog WHERE broadlog_idx = #{searchBroadlogId}
+	</select>
+	<delete id="deleteBroadlog" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO">
+		DELETE FROM tn_broadlog WHERE idx = #{idx}
+	</delete>
+	<select id="selectLastLineNum" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO" resultType="int">
+		SELECT MAX(line_num)
+		WHERE 1=1
+			<if test="searchBroadlogId != null"> AND broadlog_id = #{searchBroadlogId}</if>
+			<if test="searchLogCollectPnttmIdx != null"> AND log_collect_pnttm_idx = #{searchLogCollectPnttmIdx}</if>
+			<if test="searchLineNum != null"> AND line_num = #{searchLineNum}</if>
+			<if test="searchType != null"> <!-- 나중에 채워넣기 --> </if>
+			<if test="searchDevId != null"> AND dev_id = #{searchDevId}</if>
+			<if test="searchJId != null"> AND j_id = #{searchJId}</if>
+			<if test="searchProType != null"> AND pro_type = #{searchProType}</if>
+			<if test="searchBroadSttus != null"> AND broad_sttus = #{searchBroadSttus}</if>
+			<if test="searchBroadType != null"> AND broad_type = #{searchBroadType}</if>
+			<if test="searchLogTime != null"> AND log_time = #{searchLogTime}</if>
+			<if test="searchLogStr != null"> AND log_str LIKE CONCAT(CONCAT('%',  #{searchLogStr}), '%')</if>
+			<if test="logType != null">, log_type = #{logType}</if>
+	</select>
+	
+	<select id="listBroadlogDevSttus" parameterType="com.gyeongbukSystem.management.mainSystem.dto.BroadlogVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.Broadlog">
+		<!-- SELECT * FROM TN_BROADLOG WHERE broadlog_idx in 
+			(SELECT MAX(broadlog_idx) broadlog_idx FROM TN_BROADLOG WHERE log_type = 1 GROUP BY dev_id) -->
+		select B.* from 
+		(select dev_id, max(log_time) log_time from tn_broadlog WHERE log_type = 1 group by dev_id) A left join tn_broadlog B on A.dev_id = B.dev_id and A.log_time = B.log_time	 
+	</select>
+</mapper>

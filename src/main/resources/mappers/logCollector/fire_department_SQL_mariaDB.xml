@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyeongbukSystem.management.mainSystem.crawling.FireDepartmentDAO">	
+	<select id="listFireDepartment" parameterType="com.gyeongbukSystem.management.mainSystem.dto.FireDepartmentVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.FireDepartment">
+		SELECT * FROM fire_department
+		WHERE 1=1
+			<if test="searchFname != null and !searchFname.equals('')"> AND fname LIKE CONCAT(CONCAT('%',  #{searchFname}), '%')</if>
+		ORDER BY f_sort asc
+	</select>
+	<select id="selectFireDepartment" parameterType="com.gyeongbukSystem.management.mainSystem.dto.FireDepartmentVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.FireDepartment">
+		SELECT * FROM fire_department WHERE fidx = #{searchFidx}
+	</select>
+</mapper>

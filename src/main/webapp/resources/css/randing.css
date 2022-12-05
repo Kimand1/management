@@ -1,0 +1,57 @@
+.randing .auto {width:1400px;margin:auto;padding:0;}
+.randing #header {background:none;z-index:9999;height:auto;}
+.randing #header .logo a {padding:43px 0;}
+.randing #header .loginBox {float:right;padding:50px 0;}
+.randing #header .loginBox .inputBox {float:left;width:160px;margin-right:5px;position:relative;}
+.randing #header .loginBox .inputBox input {background:rgba(255,255,255,0.25);height:35px;border:none;padding:0 10px 0 35px;width:100%;color:#fff;font-size:14px;font-family:"Noto Sans KR";border-radius:0;}
+.randing #header .loginBox .inputBox.rev input {background:#fff;border-radius:0;color:#666;}
+.randing #header .loginBox .inputBox input::placeholder {color:#fff;opacity:0.8;}
+.randing #header .loginBox .inputBox .icon {position:absolute;top:0;left:0;width:35px;height:100%;background-repeat:no-repeat;background-position:50% 50%;}
+.randing #header .loginBox .inputBox.id .icon {background-image:url("/resources/images/randing/login_id.png");}
+.randing #header .loginBox .inputBox.pw .icon {background-image:url("/resources/images/randing/login_pw.png");}
+.randing #header .loginBox .inputBox.id.rev .icon {background-image:url("/resources/images/randing/login_id_on.png");}
+.randing #header .loginBox .inputBox.pw.rev .icon {background-image:url("/resources/images/randing/login_pw_on.png");}
+.randing #header .loginBox > a {display:block;float:left;width:63px;height:35px;border:1px solid #fff;text-align:center;line-height:33px;background:#fff;font-size:14px;color:#0c1a88;font-weight:500;font-family:"Noto Sans KR";transition:0.3s all ease-out;}
+.randing #header .loginBox > a:hover {background:none;color:#fff;}
+
+
+
+
+
+#mainVisual {width:100%;position: relative;overflow: hidden;}
+#mainVisual li {overflow: hidden;position:relative;}
+#mainVisual li .imgBox {background-repeat:no-repeat;background-size:cover;background-position:center;position:absolute;top:0;left:0;width:100%;height:100%;transform:scale(1.1);transition:4s all ease-out;}
+#mainVisual li .inner {position:absolute;top:0;left:0;width:100%;height:100%;z-index:9;}
+#mainVisual li .inner .auto {height:100%;}
+.slick-slider,.slick-list,.slick-track,.slick-slide {height:100%;}
+#mainVisual li.visual01 .imgBox {background-image:url("/resources/images/randing/mainVisual01.jpg");}
+#mainVisual li.visual02 .imgBox {background-image:url("/resources/images/randing/mainVisual02.jpg");}
+#mainVisual li.visual03 .imgBox {background-image:url("/resources/images/randing/mainVisual03.jpg");}
+
+#mainVisual li .txtBox {text-align:left;}
+#mainVisual li .txtBox dl dt  {font-size:40px;color:#fff;font-weight:700;opacity:0;position:relative;left:-100px;transition:1s all ease-out;line-height:50px;margin-bottom:35px;padding-bottom:35px;}
+#mainVisual li .txtBox dl dd  {font-size:20px;color:#fff; opacity:0;position:relative;left:-100px;transition:1s all ease-out;transition-delay:1s;}
+#mainVisual li .txtBox dl dt:before {content:"";position:absolute;bottom:0;left:-100px;width:40px;height:1px;background:#fff;opacity:0;transition:1s all ease-out;transition-delay:0.5s;}
+#mainVisual li .btnView {position:relative;left:-100px;margin-top:40px;transition:1s all ease-out;transition-delay:1.5s;opacity:0;}
+#mainVisual li a {display:block;width:190px;line-height:53px;font-size:17px;text-align:center;border-radius:5px;color:#fff;border:1px solid #fff;padding-right:15px;
+	background-image:url("/resources/images/randing/rightArrow.png");background-position:150px 46%;background-repeat:no-repeat;
+}
+#mainVisual li a img {margin-top:18px;margin-left:10px;}
+#mainVisual li a:hover {background-color:#fff;color:#333;font-weight:700;background-image:url("/resources/images/randing/rightArrow_b.png");}
+#mainVisual li.active-item .txtBox dl dt {opacity:1;left:0;}
+#mainVisual li.active-item .txtBox dl dd {opacity:1;left:0;letter-spacing:-0.75px;}
+#mainVisual li.active-item .txtBox dl dt:before {opacity:1;left:0;}
+#mainVisual li.active-item .imgBox {transform:scale(1.0);}
+#mainVisual li.active-item .btnView {opacity:1;left:0;}
+
+#mainVisual > a {position:absolute;top:50%;margin-top:-20px;z-index:1;opacity:0.7;transition:0.3s all ease-out;}
+#mainVisual > a:hover {opacity:1;}
+#mainVisual > a.btnPrev {left:50%;margin-left:-800px;}
+#mainVisual > a.btnNext {right:50%;margin-right:-800px;}
+
+#mainVisual .slick-dots {position:absolute;left:0;bottom:100px;width:100%;text-align:center;}
+#mainVisual .slick-dots li {display:inline-block;text-indent:-999999px;width:3px;height:20px;background:#fff;margin:0 8px;transition:0.3s all ease-out;opacity:0.5;cursor:pointer;}
+#mainVisual .slick-dots li.slick-active {transform:rotate(30deg);opacity:1;}
+#mainVisual .slick-dots.black li {background:#4d4d4d;}
+
+.randing #footer {position:absolute;bottom:0;left:0;width:100%;z-index:9999;background:#1a1a1a;border:none;}

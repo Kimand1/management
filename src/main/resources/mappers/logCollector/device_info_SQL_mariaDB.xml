@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyeongbukSystem.management.mainSystem.crawling.DeviceInfoDAO">	
+	<select id="listDeviceInfo" parameterType="com.gyeongbukSystem.management.mainSystem.dto.DeviceInfoVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.DeviceInfo">
+		SELECT * FROM device_info
+		WHERE 1=1
+			<if test="searchDidx != null and !searchDidx.equals('')"> AND didx = #{searchDidx}</if>
+			<if test="searchFidx != null and !searchFidx.equals('')"> AND fidx = #{searchFidx}</if>
+			<if test="searchDname != null and !searchDname.equals('')"> AND dname LIKE CONCAT(CONCAT('%',  #{searchDname}), '%')</if>
+			<if test="searchDevId != null and !searchDevId.equals('')"> AND dev_id = #{searchDevId}</if>
+			<if test="searchStationId != null and !searchStationId.equals('')"> AND dev_id = #{searchStationId}</if>
+		ORDER BY dev_id asc
+	</select>
+	<select id="selectDeviceInfo" parameterType="com.gyeongbukSystem.management.mainSystem.dto.DeviceInfoVO" resultType="com.gyeongbukSystem.management.mainSystem.dto.DeviceInfo">
+		SELECT * FROM device_info WHERE didx = #{searchDidx}
+	</select>
+</mapper>
+
