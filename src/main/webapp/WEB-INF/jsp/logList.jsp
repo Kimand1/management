@@ -64,17 +64,26 @@ function viewLog(){
 				<label for="logType">로그 종류</label>
 				<select id="logType" name="searchLogType">
 					<option value="">전체</option>
-					<option value="3" <c:if test="${broadlogVO.searchLogType  eq '3'}">selected</c:if>>방송 정보 로그</option>
-					<option value="1" <c:if test="${broadlogVO.searchLogType  eq '1'}">selected</c:if>>디바이스 상태 로그</option>
-					<option value="2" <c:if test="${broadlogVO.searchLogType  eq '2'}">selected</c:if>>프로그램 상태 로그</option>
+					<option value="3" <c:if test="${broadlogVO.searchLogType eq '3'}">selected</c:if>>방송 정보 로그</option>
+					<option value="1" <c:if test="${broadlogVO.searchLogType eq '1'}">selected</c:if>>디바이스 상태 로그</option>
+					<option value="2" <c:if test="${broadlogVO.searchLogType eq '2'}">selected</c:if>>프로그램 상태 로그</option>
 				</select>
 				<label for="proType">작성 프로그램 종류</label>
 				<select id="proType" name="searchProType">
 					<option value="">전체</option>
-					<option value="G" <c:if test="${broadlogVO.searchProType  eq 'G'}">selected</c:if>>게이트웨이</option>
-					<option value="R" <c:if test="${broadlogVO.searchProType  eq 'R'}">selected</c:if>>레코더</option>
-					<option value="M" <c:if test="${broadlogVO.searchProType  eq 'M'}">selected</c:if>>매니저</option>
-					<option value="C" <c:if test="${broadlogVO.searchProType  eq 'C'}">selected</c:if>>콘솔</option>
+					<option value="G" <c:if test="${broadlogVO.searchProType eq 'G'}">selected</c:if>>게이트웨이</option>
+					<option value="R" <c:if test="${broadlogVO.searchProType eq 'R'}">selected</c:if>>레코더</option>
+					<option value="M" <c:if test="${broadlogVO.searchProType eq 'M'}">selected</c:if>>매니저</option>
+					<option value="C" <c:if test="${broadlogVO.searchProType eq 'C'}">selected</c:if>>콘솔</option>
+				</select>
+				<label for="searchBroadSttus">방송상태</label>
+				<select name="searchBroadSttus" id="searchBroadSttus">
+					<option value="">전체</option>
+					<option value="1" <c:if test="${broadlogVO.searchBroadSttus eq '1'}">selected</c:if>>방송시작/디바이스연결/연결</option>
+					<option value="2" <c:if test="${broadlogVO.searchBroadSttus eq '2'}">selected</c:if>>방송종료/연결끊어짐</option>
+					<option value="3" <c:if test="${broadlogVO.searchBroadSttus eq '3'}">selected</c:if>>출동벨 수신</option>
+					<option value="4" <c:if test="${broadlogVO.searchBroadSttus eq '4'}">selected</c:if>>방송 실패</option>
+					<option value="255" <c:if test="${broadlogVO.searchBroadSttus eq '255'}">selected</c:if>>방송종료/연결이상</option>							
 				</select>
 			</div>
 			<div class="had2" > 	
@@ -250,69 +259,6 @@ function viewLog(){
 									</tr>
 								</c:forEach>	
 								</tbody>
-								<!-- <caption>거통화이력</caption>
-								<colgroup>
-									<col width="33.3%" span="3" />
-								</colgroup>
-								<thead>
-								<tr>
-									<th scope="col">통화시작시간</th>
-									<th scope="col">접수대번호</th>
-									<th scope="col">신고자번호</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>01011111111</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>01011111111</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								<tr>
-									<td>2022-10-20 18:07:30</td>
-									<td>0232</td>
-									<td>0100</td>
-								</tr>
-								</tbody> -->
 							</table>
 						</div>
 						<div class="paging">
