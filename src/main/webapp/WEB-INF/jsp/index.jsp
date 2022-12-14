@@ -38,7 +38,7 @@
 							<!-- <dt>서버 1</dt> -->
 							<dd>
 								<ul class="donut-ul" style="text-align: center;">
-								<li><dt id="ser1" class="bangser">DB 서버</dt><!-- <br/><span>127.0.0.1</span> --></li>
+								<li><dt id="ser1" class="bangser">DB 서버</dt></li>
 								<li>
 									<div id="specificCPUChart0" class="donut-size CPU">
 										<div class="pie-wrapper">
@@ -92,7 +92,7 @@
 							
 							<dd>
 								<ul class="donut-ul" style="text-align: center;">
-								<li><dt id="ser2" class="bangser">방송서버 1</dt><!-- <br/><span>127.0.0.1</span> --></li>
+								<li><dt id="ser2" class="bangser" style="line-height: 0.7em;">방송서버 1<br/><span style="font-size: 0.5em" id="ser1Ip"></span></dt></li>
 								<li>
 									<div id="specificCPUChart1" class="donut-size CPU">
 										<div class="pie-wrapper">
@@ -145,7 +145,7 @@
 							</dd>
 							<dd>
 								<ul class="donut-ul" style="text-align: center;">
-								<li><dt id="ser3" class="bangser">방송서버 2</dt><!-- <br/><span>127.0.0.1</span> --></li>
+								<li><dt id="ser3" class="bangser" style="line-height: 0.7em;">방송서버 2<br/><span style="font-size: 0.5em" id="ser2Ip"></span></dt></li>
 								<li>
 									<div id="specificCPUChart2" class="donut-size CPU">
 										<div class="pie-wrapper">
@@ -258,6 +258,7 @@
 
 <script>
 $(document).ready(function(){
+	serverIp();
 	getSvrResource(0);
 	getSvrResource(1);
 	getSvrResource(2);
@@ -336,8 +337,18 @@ function goLogPage(devId){
 function chkMaster(){
 	var url = '/nowMaster.do';
 	$.get(url, '', function(newitems){
-		 $(".bangser").removeClass("this_server");
+		$(".bangser").removeClass("this_server");
 		$("#ser"+newitems).addClass("this_server");
+	});
+}
+function serverIp(){
+	var url = '/getServer1Ip.do';
+	$.get(url, '', function(newitems){
+		document.getElementById("ser1Ip").innerHTML = newitems;
+	});
+	var url = '/getServer2Ip.do';
+	$.get(url, '', function(newitems){
+		document.getElementById("ser2Ip").innerHTML = newitems;
 	});
 }
 </script>

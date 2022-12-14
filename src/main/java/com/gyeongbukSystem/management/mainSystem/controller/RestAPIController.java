@@ -243,4 +243,14 @@ public class RestAPIController {
 		
 		return result;
 	}
+	
+	@RequestMapping("/getServer1Ip.do")
+	public String getServer1Ip(HttpServletRequest request) {
+		return admin1Ip;
+	}
+	
+	@RequestMapping("/getServer2Ip.do")
+	public String getServer2Ip(HttpServletRequest request) {
+		return admin2Ip;
+	}
 }
